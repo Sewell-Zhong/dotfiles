@@ -1,0 +1,2 @@
+# 
+if [ -f ~/.config/common/.functions.local ]; then source ~/.config/common/.functions.local; fi

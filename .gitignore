@@ -1,0 +1,8 @@
+# Local configuration file mode
+*.local
+*.local.*
+*.secret
+*.private
+*.personal
+config.local.*
+.env.local
