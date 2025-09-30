@@ -106,7 +106,7 @@ stow_link() {
             backup_config "$target"
         done
 
-        stow --no-folding -d "$DOTFILES_DIR" -t="$HOME" "$package" &>/dev/null
+        stow --no-folding -d "$DOTFILES_DIR" -t "$HOME" "$package" &>/dev/null
     else
         echo -e "${RED}Stow package $package does not exist, skipping${NC}"
     fi
@@ -130,8 +130,8 @@ install_dependencies_or_plugins() {
     # git
     install_apt_package "git"
     # diff-so-fancy download + symlink
-    install_git_repo "https://github.com/so-fancy/diff-so-fancy.git" "/opt/diff-so-fancy"
-    ln -sf "/opt/diff-so-fancy/diff-so-fancy" "$HOME/.local/bin/diff-so-fancy"
+    install_git_repo "https://github.com/so-fancy/diff-so-fancy.git" "$HOME/.local/share/diff-so-fancy"
+    ln -sf "$HOME/.local/share/diff-so-fancy/diff-so-fancy" "$HOME/.local/bin/diff-so-fancy"
 
     # stow
     install_apt_package "stow"

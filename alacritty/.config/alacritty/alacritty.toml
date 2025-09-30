@@ -47,115 +47,115 @@ thickness = 0.15
 [mouse]
 hide_when_typing = false
 
-[[mouse_bindings]]
+[[mouse.bindings]]
 mouse = "Middle"
 action = "PasteSelection"
 
-[[key_bindings]]
+[keyboard]
+
+[[keyboard.bindings]]
 key = "Paste"
 action = "Paste"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "Copy"
 action = "Copy"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "L"
 mods = "Control"
 action = "ClearLogNotice"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "L"
 mods = "Control"
 mode = "~Vi"
 chars = "\f"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "PageUp"
 mods = "Shift"
 mode = "~Alt"
 action = "ScrollPageUp"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "PageDown"
 mods = "Shift"
 mode = "~Alt"
 action = "ScrollPageDown"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "Home"
 mods = "Shift"
 mode = "~Alt"
 action = "ScrollToTop"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "End"
 mods = "Shift"
 mode = "~Alt"
 action = "ScrollToBottom"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "V"
 mods = "Control|Shift"
 action = "Paste"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "C"
 mods = "Control|Shift"
 action = "Copy"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "F"
 mods = "Control|Shift"
 action = "SearchForward"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "B"
 mods = "Control|Shift"
 action = "SearchBackward"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "C"
 mods = "Control|Shift"
 mode = "Vi"
 action = "ClearSelection"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "Insert"
 mods = "Shift"
 action = "PasteSelection"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "Key0"
 mods = "Control"
 action = "ResetFontSize"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "Equals"
 mods = "Control"
 action = "IncreaseFontSize"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "Plus"
 mods = "Control"
 action = "IncreaseFontSize"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "NumpadAdd"
 mods = "Control"
 action = "IncreaseFontSize"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "Minus"
 mods = "Control"
 action = "DecreaseFontSize"
 
-[[key_bindings]]
+[[keyboard.bindings]]
 key = "NumpadSubtract"
 mods = "Control"
 action = "DecreaseFontSize"
-
-[keyboard]
 
 [debug]
 render_timer = false
