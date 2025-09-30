@@ -1,21 +1,24 @@
-draw_bold_text_with_bright_colors = true
-background_opacity = 1
-live_config_reload = false
-working_directory = "None"
-alt_send_esc = true
+#working_directory = "None"
 
 [env]
 TERM = "xterm-256color"
 WINIT_X11_SCALE_FACTOR = "1"
 
+[general]
+live_config_reload = false
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
 [window]
+opacity = 1.0
 dynamic_padding = false
 decorations = "full"
 startup_mode = "Windowed"
 dynamic_title = true
 
   [window.dimensions]
-  columns = 80
+  columns = 120
   lines = 24
 
   [window.padding]
@@ -43,12 +46,6 @@ thickness = 0.15
 
 [mouse]
 hide_when_typing = false
-
-  [mouse.double_click]
-  threshold = 300
-
-  [mouse.triple_click]
-  threshold = 300
 
 [[mouse_bindings]]
 mouse = "Middle"
@@ -157,6 +154,8 @@ action = "DecreaseFontSize"
 key = "NumpadSubtract"
 mods = "Control"
 action = "DecreaseFontSize"
+
+[keyboard]
 
 [debug]
 render_timer = false

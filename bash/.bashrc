@@ -1,4 +1,4 @@
-# Load common configuration.
+# Load common configuration. aliases exports functions
 for file in ~/.config/common/.{aliases,exports,functions}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
@@ -34,3 +34,16 @@ if ! shopt -oq posix; then
         source /etc/bash_completion
     fi
 fi
+
+# dircolors.
+[ -x "$(command -v dircolors)" ] && eval "$(dircolors -b ~/.config/dircolors/.dircolors >/dev/null)"
+
+# Integrated fzf
+if [ -x "$(command -v fzf)" ]; then
+    [ ! -d "$HOME/.config/fzf/shell" ] && mkdir -p "$HOME/.config/fzf/shell" >/dev/null
+    [ ! -f "$HOME/.config/fzf/shell/key-bindings.bash" ] && cp /usr/share/doc/fzf/examples/key-bindings.bash "$HOME/.config/fzf/shell/" >/dev/null
+    [ -f "$HOME/.config/fzf/shell/key-bindings.bash" ] && source "$HOME/.config/fzf/shell/key-bindings.bash"
+fi
+
+# Base16 Shell.
+[ -f ~/.local/bin/base16-oxide ] && source ~/.local/bin/base16-oxide

@@ -1,0 +1,15 @@
+# ============================================
+# Bat user configuration
+# Save path: ~/.config/bat/config
+# ============================================
+
+# ---------------------------
+# Pager settings
+# ---------------------------
+# auto: use pager only if content is longer than one screen
+--paging=auto
+
+# ---------------------------
+# Long line handling
+# ---------------------------
+--wrap=character  # Wrap lines by character if exceeding terminal width
