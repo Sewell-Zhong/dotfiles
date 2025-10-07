@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Set color variables
 RED='\033[0;31m'
@@ -34,7 +35,7 @@ install_apt_package() {
     if ! is_installed "$1"; then
         echo -e "${YELLOW}Installing missing package: $1${NC}"
         sudo apt update &>/dev/null
-        sudo apt install -y "$1" &>/dev/null
+        sudo apt install -y "$1"
     else
         echo -e "${GREEN}$1 is already installed${NC}"
     fi
@@ -106,7 +107,7 @@ stow_link() {
             backup_config "$target"
         done
 
-        stow --no-folding -d "$DOTFILES_DIR" -t "$HOME" "$package" &>/dev/null
+        stow --no-folding -d "$DOTFILES_DIR" -R -f -t "$HOME" "$package" &>/dev/null
     else
         echo -e "${RED}Stow package $package does not exist, skipping${NC}"
     fi
@@ -131,6 +132,9 @@ install_dependencies_or_plugins() {
     install_apt_package "git"
     # diff-so-fancy download + symlink
     install_git_repo "https://github.com/so-fancy/diff-so-fancy.git" "$HOME/.local/share/diff-so-fancy"
+    if [ ! -d "$HOME/.local/bin" ]; then
+        mkdir -p "$HOME/.local/bin" &>/dev/null
+    fi
     ln -sf "$HOME/.local/share/diff-so-fancy/diff-so-fancy" "$HOME/.local/bin/diff-so-fancy"
 
     # stow
