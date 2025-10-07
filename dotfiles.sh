@@ -34,8 +34,8 @@ is_installed() {
 install_apt_package() {
     if ! is_installed "$1"; then
         echo -e "${YELLOW}Installing missing package: $1${NC}"
-        sudo apt update &>/dev/null
-        sudo apt install -y "$1"
+        sudo apt update > /dev/null
+        sudo apt install -y "$1" > /dev/null
     else
         echo -e "${GREEN}$1 is already installed${NC}"
     fi
@@ -48,7 +48,7 @@ install_git_repo() {
 
     if ! is_installed "$dir"; then
         echo -e "${YELLOW}Cloning Git repo: $repo${NC}"
-        git clone "$repo" "$dir" &>/dev/null
+        git clone "$repo" "$dir" > /dev/null
     else
         echo -e "${GREEN}$dir already exists, skipping clone${NC}"
     fi
@@ -61,7 +61,7 @@ install_oh_my_zsh() {
 
     if [ ! -d "$ZSH" ]; then
         echo -e "${YELLOW}Installing Oh-My-Zsh ...${NC}"
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended &>/dev/null
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended > /dev/null
     else
         echo -e "${GREEN}Oh-My-Zsh is already installed${NC}"
     fi
@@ -85,11 +85,11 @@ backup_config() {
         local backup_dir="$(dirname "$backup_target")"
 
         if [ ! -d "$backup_dir" ]; then
-            mkdir -p "$backup_dir" &>/dev/null
+            mkdir -p "$backup_dir" > /dev/null
         fi
 
         echo -e "${YELLOW}Backing up $target to $backup_target${NC}"
-        mv "$target" "$backup_target" &>/dev/null
+        mv "$target" "$backup_target" > /dev/null
     fi
 }
 
@@ -107,7 +107,7 @@ stow_link() {
             backup_config "$target"
         done
 
-        stow --no-folding -d "$DOTFILES_DIR" -R -f -t "$HOME" "$package" &>/dev/null
+        stow --no-folding -d "$DOTFILES_DIR" -R -f -t "$HOME" "$package" > /dev/null
     else
         echo -e "${RED}Stow package $package does not exist, skipping${NC}"
     fi
@@ -133,7 +133,7 @@ install_dependencies_or_plugins() {
     # diff-so-fancy download + symlink
     install_git_repo "https://github.com/so-fancy/diff-so-fancy.git" "$HOME/.local/share/diff-so-fancy"
     if [ ! -d "$HOME/.local/bin" ]; then
-        mkdir -p "$HOME/.local/bin" &>/dev/null
+        mkdir -p "$HOME/.local/bin" > /dev/null
     fi
     ln -sf "$HOME/.local/share/diff-so-fancy/diff-so-fancy" "$HOME/.local/bin/diff-so-fancy"
 
