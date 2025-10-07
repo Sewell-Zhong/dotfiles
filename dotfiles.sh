@@ -107,7 +107,7 @@ stow_link() {
             backup_config "$target"
         done
 
-        stow --no-folding -d "$DOTFILES_DIR" -R -f -t "$HOME" "$package" > /dev/null
+        stow --no-folding -d "$DOTFILES_DIR" -R -t "$HOME" "$package" > /dev/null
     else
         echo -e "${RED}Stow package $package does not exist, skipping${NC}"
     fi
