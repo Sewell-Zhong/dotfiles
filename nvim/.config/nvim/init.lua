@@ -44,6 +44,8 @@ o.wildmenu = true
 o.wildmode = "list:longest"
 opt.termguicolors = true
 o.encoding = "utf-8"
+-- o.fileencoding = "utf-8"
+-- opt.fileencodings = "utf-8"
 
 -- Lisp words
 opt.lispwords:append({ "defroutes","defpartial","defpage","defaction","deffilter","defview","defsection","describe","it" })
