@@ -88,3 +88,17 @@
 
 [include]
     path = ~/.config/git/.gitconfig.local
+
+# ---------------------------------------------------------------------------------------
+# .gitconfig.local can store private information or machine-specific configuration
+# ---------------------------------------------------------------------------------------
+# For example :
+#   [user]
+#       name = Your Name
+#       email = your.email@example.com
+#
+#   [credential]
+#       helper = store
+#
+#   [core]
+#       sshCommand = "ssh -i ~/.ssh/id_rsa_personal"
