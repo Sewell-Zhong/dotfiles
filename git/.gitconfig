@@ -102,3 +102,5 @@
 #
 #   [core]
 #       sshCommand = "ssh -i ~/.ssh/id_rsa_personal"
+[credential]
+	helper = manager
