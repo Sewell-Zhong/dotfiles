@@ -16,11 +16,17 @@ ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$ZSH/custom"
 
 # Check if a software package is installed
-is_installed() {
+is_installed_of_apt() {
     # Check apt-installed packages
     if dpkg -l | grep -q "$1"; then
         return 0  # Installed via apt
     fi
+
+    return 1  # Neither installed via apt nor git
+}
+
+# Check if a software package is installed
+is_installed_of_path() {
 
     # Check git-installed packages (stored in a specific directory)
     if [ -d "$1" ]; then
@@ -32,10 +38,10 @@ is_installed() {
 
 # Install an apt package
 install_apt_package() {
-    if ! is_installed "$1"; then
+    if ! is_installed_of_apt "$1"; then
         echo -e "${YELLOW}Installing missing package: $1${NC}"
-        sudo apt update > /dev/null
-        sudo apt install -y "$1" > /dev/null
+        sudo apt-get update > /dev/null
+        sudo apt-get install -y "$1" > /dev/null
     else
         echo -e "${GREEN}$1 is already installed${NC}"
     fi
@@ -46,7 +52,7 @@ install_git_repo() {
     local repo="$1"
     local dir="$2"
 
-    if ! is_installed "$dir"; then
+    if ! is_installed_of_path "$dir"; then
         echo -e "${YELLOW}Cloning Git repo: $repo${NC}"
         git clone "$repo" "$dir" > /dev/null
     else
@@ -117,13 +123,6 @@ stow_link() {
 install_dependencies_or_plugins() {
     echo -e "${BLUE}Installing packages...${NC}"
 
-    # x11-xserver-utils
-    install_apt_package "x11-xserver-utils"
-    # coreutils
-    install_apt_package "coreutils"
-    # locales
-    install_apt_package "locales"
-
     # font support
     install_apt_package "fonts-font-awesome"
     install_apt_package "fonts-hack-ttf"
@@ -151,7 +150,7 @@ install_dependencies_or_plugins() {
     # neovim
     install_apt_package "neovim"
     # vim
-    install_apt_package "vim"
+#    install_apt_package "vim"
     # glow
     install_apt_package "glow"
     # bat
@@ -228,7 +227,7 @@ link_module(){
     stow_link "nvim"
 
     # vim
-    stow_link "vim"
+#    stow_link "vim"
 
     # wget
     stow_link "wget"
