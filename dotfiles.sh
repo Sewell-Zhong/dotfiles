@@ -124,8 +124,9 @@ install_dependencies_or_plugins() {
     echo -e "${BLUE}Installing packages...${NC}"
 
     # font support
-    install_apt_package "fonts-font-awesome"
-    install_apt_package "fonts-hack-ttf"
+    install_apt_package "fonts-jetbrains-mono"
+    install_apt_package "fonts-noto-cjk"
+    install_apt_package "fonts-noto-color-emoji"
 
     # git
     install_apt_package "git"
